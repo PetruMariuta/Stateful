@@ -22,12 +22,12 @@ spec:
           args:
             - |
               while true; do
-                ps -awx>> fisiere/file1.md
+                df -h>> fisiere/file2.md
                 sleep 10000;
               done
           volumeMounts:
             - name: stateful-volume
-              mountPath: /test/tester
+              mountPath: /test/tester2
   volumeClaimTemplates:
     - metadata:
         name: stateful-volume
