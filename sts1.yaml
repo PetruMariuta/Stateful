@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stateful
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stateful
+  serviceName: stateful
+  template:
+    metadata:
+      labels:
+        app: stateful
+    spec:
+      containers:
+        - name: stateful
+          image: petrumariuta/stateful:latest
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              while true; do
+                ps >> fisiere/file1.md
+                sleep 10;
+              done
+          volumeMounts:
+            - name: stateful-volume
+              mountPath: /test/tester
+  volumeClaimTemplates:
+    - metadata:
+        name: stateful-volume
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
