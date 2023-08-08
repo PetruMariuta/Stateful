@@ -12,13 +12,22 @@ https://www.transposit.com/docs/references/create-readme/
 
 Created the dockerfile, mostly re-used the one from the previous task
 
-For the 1st sts, i mostly re-used the stateful yaml from the 2nd task
+-1ST STS sts, i mostly re-used the stateful yaml from the 2nd task
 
-Persistent volumes recap:
-https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+    Persistent volumes recap:
+    https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
-Check the yaml
-https://www.yamllint.com/
+    Check the yaml
+    https://www.yamllint.com/
 
-my pod was terminating due to exit code 137, solved modifying the sleep 1 to sleep 10000, i used:
-https://stackoverflow.com/questions/60107959/solve-command-terminated-with-exit-code-137-in-pod-kubernetes
+    my pod was terminating due to exit code 137, solved modifying the sleep 1 to sleep 10000, i used:
+    https://stackoverflow.com/questions/60107959/solve-command-terminated-with-exit-code-137-in-pod-kubernetes
+
+-2ND STS was similar to the 1st sts, but i used df -h instead  of ps -awx
+
+-3RD STS
+
+
+#PT MAINE, AM REFACUT DOCKERFILE, TESTEAZA; trebuie testate sts3 si sts4 after 
+
+

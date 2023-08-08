@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 COPY 00proxy.conf /etc/apt/apt.conf.d/00proxy.conf
 
-RUN apt-get update  && apt-get install -y apache2 apache2-utils 
+RUN apt-get update  && apt-get install -y apache2 apache2-utils net-tools systemd
 
 WORKDIR /stateful
 

@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful2
+  name: stateful3
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful2
-  serviceName: stateful2
+      app: stateful3
+  serviceName: stateful3
   template:
     metadata:
       labels:
-        app: stateful2
+        app: stateful3
     spec:
       containers:
         - name: stateful
@@ -20,14 +20,14 @@ spec:
             - /bin/sh
             - -c
           args:
-            - |
+            - |   # get ip, gateway, dns, hostname 
               while true; do
-                df -h>> fisiere/file2.md
+                ifconfig -a>> fisiere/file3.md  
                 sleep 10000;
               done
           volumeMounts:
             - name: stateful-volume
-              mountPath: /test/tester2
+              mountPath: /test/tester3
   volumeClaimTemplates:
     - metadata:
         name: stateful-volume

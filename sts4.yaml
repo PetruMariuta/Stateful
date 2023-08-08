@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful2
+  name: stateful4
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful2
-  serviceName: stateful2
+      app: stateful4
+  serviceName: stateful4
   template:
     metadata:
       labels:
-        app: stateful2
+        app: stateful4
     spec:
       containers:
         - name: stateful
@@ -22,12 +22,12 @@ spec:
           args:
             - |
               while true; do
-                df -h>> fisiere/file2.md
+                ps -awx>> fisiere/file4.md
                 sleep 10000;
               done
           volumeMounts:
             - name: stateful-volume
-              mountPath: /test/tester2
+              mountPath: /test/tester4
   volumeClaimTemplates:
     - metadata:
         name: stateful-volume
