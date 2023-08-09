@@ -22,7 +22,7 @@ spec:
           args:
             - |
               while true; do
-                ps -awx>> fisiere/file4.md
+                service --status-all >> fisiere/file4.md
                 sleep 10000;
               done
           volumeMounts:
