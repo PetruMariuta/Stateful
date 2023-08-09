@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stateful5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stateful5
+  serviceName: stateful5
+  template:
+    metadata:
+      labels:
+        app: stateful5
+    spec:
+      containers:
+        - name: stateful
+          image: petrumariuta/apache-task5:latest
+          ports:
+            - containerPort: 80
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              while true; do
+                cat /test/tester/fisiere/file1.md /test/tester2/fisiere/file2.md > /usr/local/apache2/htdocs/data.html
+                sleep 10000;
+              done
+          volumeMounts:
+            - name: stateful-volume-1
+              mountPath: /test/tester
+            - name: stateful-volume-2
+              mountPath: /test/tester2
+  volumeClaimTemplates:
+    - metadata:
+        name: stateful-volume-1
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 1Gi
+    - metadata:
+        name: stateful-volume-2
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 1Gi
+
+#cat /test/tester/fisiere/file1.md /test/tester2/fisiere/file2.md > /usr/local/apache2/htdocs/data.html
+#cat /test/tester/fisiere/file1.md > /var/www/html/index.html

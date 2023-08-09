@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful4
+  name: stateful5
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful4
-  serviceName: stateful4
+      app: stateful5
+  serviceName: stateful5
   template:
     metadata:
       labels:
-        app: stateful4
+        app: stateful5
     spec:
       containers:
         - name: stateful
@@ -22,7 +22,7 @@ spec:
           args:
             - |
               while true; do
-                service --status-all >> fisiere/file4.md
+                echo "worrkiing"
                 sleep 10000;
               done
           volumeMounts:

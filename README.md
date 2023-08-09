@@ -31,3 +31,16 @@ Created the dockerfile, mostly re-used the one from the previous task
 #PT MAINE, AM REFACUT DOCKERFILE, TESTEAZA; trebuie testate sts3 si sts4 after 
 
 
+points 1-3 au nevoie de alt dockerfile, nu au nevoie de apache2; 
+
+script pt deploy de sts, functie -- for loop i in range 1,4
+
+refacere dockerfile pt webserver si sts, shared volume
+
+
+script care genereaza in html ce am eu in fisiere---gen <div> hardcoded ... cat/file </div>
+
+#need a new statefulset, named stateful5 to append/take the data written in the files by the stateful sets, and put it into an html such that the data can be obtained when using curl on the statefulset/pod/port
+
+
+#ordinea logica e configmap -> stateful -> service -> ingress; sterge pv nu pvc

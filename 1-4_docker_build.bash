@@ -8,7 +8,8 @@ docker_clean() {
 }
 docker_build() {
 
-docker build -t petrumariuta/stateful:latest .
+
+docker buildx  build -t petrumariuta/stateful:latest -f  ./sts.Dockerfile .
 
 docker tag statefulimg petrumariuta/stateful:latest
 docker push petrumariuta/stateful:latest
@@ -16,5 +17,6 @@ docker push petrumariuta/stateful:latest
 docker run -itd --name stateful petrumariuta/stateful
 
 }
+
 docker_clean
 docker_build

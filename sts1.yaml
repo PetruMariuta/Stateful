@@ -37,3 +37,8 @@ spec:
         resources:
           requests:
             storage: 1Gi
+
+
+#volumeMounts:
+#  - name: shared-volume
+#    mountPath: /shared-data
