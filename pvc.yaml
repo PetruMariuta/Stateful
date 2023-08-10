@@ -1,12 +1,12 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: PersistentVolumeClaim
-    - metadata:
-        name: stateful5-volume
-      spec:
-        volumeName: stateful5-volume
-        accessModes:
-          - ReadWriteMany
-        resources:
-          requests:
-            storage: 1Gi
+metadata:
+  name: task5-pvc-volume
+spec:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
 

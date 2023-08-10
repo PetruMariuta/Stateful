@@ -1,20 +1,55 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stateful
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stateful
+  serviceName: stateful
+  template:
+    metadata:
+      labels:
+        app: stateful
+    spec:
+      containers:
+        - name: stateful
+          image: petrumariuta/stateful:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              while true; do
+                ps -awx >> /test/tester/file1.md
+                sleep 10000;
+              done
+          volumeMounts:
+            - name: task5-pv-volume
+              mountPath: /test/tester
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - k3d-local-agent-1
+
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: stateful5-pv
+  name: task5-pv-volume
+  labels:
+    type: local
 spec:
+  storageClassName: local-path
   capacity:
-    storage: 5Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: "local-path"
-  volumeMode: Filesystem 
-  persistentVolumeReclaimPolicy: Retain 
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - k3d-local-agent-1
+  hostPath:
+    path: "/test/tester"
+

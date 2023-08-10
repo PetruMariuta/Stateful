@@ -28,10 +28,9 @@ spec:
                 sleep 10000;
               done
           volumeMounts:
-            - name: stateful-volume-1
+            - name: task5-pv-volume
               mountPath: /test/tester
-            - name: stateful-volume-2
-              mountPath: /test/tester2
+
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

@@ -13,6 +13,7 @@ spec:
       labels:
         app: stateful
     spec:
+      nodeName: k3d-local-agent-1 
       containers:
         - name: stateful
           image: petrumariuta/stateful:latest
@@ -26,26 +27,16 @@ spec:
                 sleep 10000;
               done
           volumeMounts:
-            - name: stateful-volume
+            - name: task5-pv-volume
               mountPath: /test/tester
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/hostname
-                operator: In
-                values:
-                - k3d-local-agent-1
-  volumeClaimTemplates:
-    - metadata:
-        name: stateful-volume-1
-      spec:
-        accessModes:
-          - ReadWriteMany
-        resources:
-          requests:
-            storage: 1Gi
+      volumes:
+        - name: task5-pv-volume
+          persistentVolumeClaim:
+            claimName: task5-pv-volume
+
+
+
+
 
 
 
