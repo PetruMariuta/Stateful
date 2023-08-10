@@ -28,14 +28,7 @@ spec:
               done
           volumeMounts:
             - name: task5-pv-volume
-              mountPath: /test/tester
-      volumes:
-        - name: task5-pv-volume
-          persistentVolumeClaim:
-            claimName: task5-pv-volume
-
-
-
+              mountPath: "/test"
 
 
 

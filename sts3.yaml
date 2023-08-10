@@ -20,9 +20,10 @@ spec:
             - /bin/sh
             - -c
           args:
-            - |   # get ip, gateway, dns, hostname 
+            - |
               while true; do
-                ifconfig -a>> fisiere/file3.md  
+                ifconfig -a>> file3.md
+              
                 sleep 10000;
               done
           volumeMounts:

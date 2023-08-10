@@ -14,7 +14,7 @@ spec:
         app: stateful5
     spec:
       containers:
-        - name: stateful
+        - name: apache-task5
           image: petrumariuta/apache-task5:latest
           ports:
             - containerPort: 80
@@ -24,23 +24,21 @@ spec:
           args:
             - |
               while true; do
-                cat /test/tester/fisiere/file1.md /test/tester2/fisiere/file2.md > /usr/local/apache2/htdocs/data.html
+                echo "ok" > /usr/local/apache2/htdocs/data.html
                 sleep 10000;
               done
           volumeMounts:
             - name: task5-pv-volume
               mountPath: /test/tester
-
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - k3d-local-agent-1              
-
+  volumeClaimTemplates:
+    - metadata:
+        name: stateful-volume
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
 
 #cat /test/tester/fisiere/file1.md /test/tester2/fisiere/file2.md > /usr/local/apache2/htdocs/data.html
 #cat /test/tester/fisiere/file1.md > /var/www/html/index.html

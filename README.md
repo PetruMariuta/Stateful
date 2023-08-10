@@ -51,3 +51,5 @@ script care genereaza in html ce am eu in fisiere---gen <div> hardcoded ... cat/
 
 !! VOLUMES
 Volume claim templates e dinamic, nu poate stoca pe acelasi volum
+
+APPLY PV -- PVC -- STS

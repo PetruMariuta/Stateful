@@ -17,5 +17,5 @@ docker run -itd --name apache-task5 petrumariuta/apache-task5
 
 }
 
-#docker_clean
+docker_clean
 docker_build
