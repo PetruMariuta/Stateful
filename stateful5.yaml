@@ -32,23 +32,16 @@ spec:
               mountPath: /test/tester
             - name: stateful-volume-2
               mountPath: /test/tester2
-  volumeClaimTemplates:
-    - metadata:
-        name: stateful-volume-1
-      spec:
-        accessModes:
-          - ReadWriteMany
-        resources:
-          requests:
-            storage: 1Gi
-    - metadata:
-        name: stateful-volume-2
-      spec:
-        accessModes:
-          - ReadWriteMany
-        resources:
-          requests:
-            storage: 1Gi
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - k3d-local-agent-1              
+
 
 #cat /test/tester/fisiere/file1.md /test/tester2/fisiere/file2.md > /usr/local/apache2/htdocs/data.html
 #cat /test/tester/fisiere/file1.md > /var/www/html/index.html

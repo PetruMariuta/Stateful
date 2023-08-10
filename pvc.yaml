@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: PersistentVolumeClaim
     - metadata:
-        name: stateful-volume
+        name: stateful5-volume
       spec:
-        volumeName: stateful-volume
+        volumeName: stateful5-volume
         accessModes:
           - ReadWriteMany
         resources:

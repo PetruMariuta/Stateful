@@ -31,4 +31,4 @@ kubectl apply -f stateful5.yaml
 
 }
 kube_delete
-#kube_apply
+kube_apply

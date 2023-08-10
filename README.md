@@ -44,3 +44,10 @@ script care genereaza in html ce am eu in fisiere---gen <div> hardcoded ... cat/
 
 
 #ordinea logica e configmap -> stateful -> service -> ingress; sterge pv nu pvc
+
+
+#sudo systemctl restart cntlm; systemctl status cntlm 
+
+
+!! VOLUMES
+Volume claim templates e dinamic, nu poate stoca pe acelasi volum

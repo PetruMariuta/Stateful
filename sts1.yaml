@@ -28,15 +28,25 @@ spec:
           volumeMounts:
             - name: stateful-volume
               mountPath: /test/tester
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - k3d-local-agent-1
   volumeClaimTemplates:
     - metadata:
-        name: stateful-volume
+        name: stateful-volume-1
       spec:
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
             storage: 1Gi
+
 
 
 #volumeMounts:
