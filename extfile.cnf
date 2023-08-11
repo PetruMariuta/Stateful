@@ -1,0 +1,2 @@
+subjectAltName=DNS:stateful5.local,IP:10.0.2.15
+extendedKeyUsage = serverAuth

@@ -1,36 +1,33 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful5
+  name: stateful3
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful5
-  serviceName: stateful5
+      app: stateful3
+  serviceName: stateful3
   template:
     metadata:
       labels:
-        app: stateful5
+        app: stateful3
     spec:
       containers:
-        - name: apache-task5
-          image: petrumariuta/apache-task5:latest
-          ports:
-            - containerPort: 80
+        - name: stateful
+          image: petrumariuta/stateful:latest
           command:
             - /bin/sh
             - -c
           args:
             - |
               while true; do
-                
+                ifconfig -a >> /fisiere/file3.md
                 sleep 10000;
               done
           volumeMounts:
             - name: stateful-volume
-              mountPath: /test/tester
-
+              mountPath: /test/tester3
   volumeClaimTemplates:
     - metadata:
         name: stateful-volume
@@ -40,6 +37,3 @@ spec:
         resources:
           requests:
             storage: 1Gi
-
-#cat /test/tester/fisiere/file1.md /test/tester2/fisiere/file2.md > /usr/local/apache2/htdocs/data.html
-#cat /test/tester/fisiere/file1.md > /var/www/html/index.html

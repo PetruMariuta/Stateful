@@ -11,10 +11,12 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: web-server-deployment-stateful5
+                name: stateful5
                 port:
                   number: 80
   tls:
     - hosts:
         - stateful5.local
+      secretName: tls-secret
+
 #      secretName: my-tls-secret-stateful5

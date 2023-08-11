@@ -13,6 +13,6 @@ WORKDIR /fisiere
 
 RUN touch file1.md && touch file2.md && touch file3.md && touch file4.md
    
-EXPOSE 81
+EXPOSE 80
 
 CMD ["apache2ctl", "-D", "FOREGROUND"]
