@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: stateful
+#  namespace: nfs-provisioning
 spec:
   replicas: 1
   selector:
@@ -16,21 +17,27 @@ spec:
       containers:
         - name: stateful
           image: petrumariuta/stateful:latest
-          command: ["/bin/sh", "-c"]
+          command:             
+            - /bin/sh
+            - -c
           args:
             - |
-              useradd -m user1
               while true; do
-                ps -awx>> fisiere/file1.md
-                sleep 10000;
+                ps -awx -o pid,user,cmd --no-headers --sort=pid --format=json >> /srv/kubernetes/file1.json
+                
+                sleep 15;
               done
-          securityContext:
-            runAsUser: 1000  # User id of "user1" from /etc/passwd
-            runAsGroup: 1000 # Group id user1 from /etc/group
+#          securityContext:
+#            runAsUser: 1000  # User id of "user1" from /etc/passwd
+#            runAsGroup: 1000 # Group id user1 from /etc/group
           volumeMounts:
-            - name: nfs-share
+            - name: pv-nfs
               mountPath: /srv/kubernetes
       volumes:
-        - name: nfs-share
+        - name: pv-nfs
           persistentVolumeClaim:
-            claimName: nfs-pvc
+            claimName: nfs-pvc-claim
+
+
+#ps -awx >> /fisiere/file1.md
+#ps -awx >> /srv/kubernetes/file1.md

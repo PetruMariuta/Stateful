@@ -23,7 +23,7 @@ spec:
           args:
             - |
               while true; do
-                ps -awx>> fisiere/file1.md
+                ps -awx>> /fisiere/file1.md
                 sleep 10000;
               done
           volumeMounts:

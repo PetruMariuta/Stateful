@@ -7,7 +7,7 @@ COPY 00proxy.conf /etc/apt/apt.conf.d/00proxy.conf
 RUN mkdir test
 RUN touch test/tester.md
 
-RUN useradd -m user1
+RUN useradd -m user3
 
 RUN apt-get update && apt-get install -y net-tools
 
@@ -17,4 +17,4 @@ WORKDIR /fisiere
 
 RUN touch file1.md && touch file2.md && touch file3.md && touch file4.md
 
-USER user1
+USER user3
