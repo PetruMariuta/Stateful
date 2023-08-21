@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful
+  name: stateful2
 #  namespace: nfs-provisioning
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful
-  serviceName: stateful
+      app: stateful2
+  serviceName: stateful2
   template:
     metadata:
       labels:
-        app: stateful
+        app: stateful2
     spec:
       containers:
         - name: stateful
@@ -22,11 +22,11 @@ spec:
             - -c
           args:
             - |
-              useradd -m user1
+              useradd -m user2
               key=1
               while true; do
-                  variable=$(ps -awx)
-                  echo "{\"$key\": \"$variable\"}" >> /srv/kubernetes/file1.json
+                  variable=$(df -h)
+                  echo "{\"$key\": \"$variable\"}" >> /srv/kubernetes/file2.json
                   key=$((key + 1))
                   sleep 10000  
               done

@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful
+  name: stateful3
 #  namespace: nfs-provisioning
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful
-  serviceName: stateful
+      app: stateful3
+  serviceName: stateful3
   template:
     metadata:
       labels:
-        app: stateful
+        app: stateful3
     spec:
       containers:
-        - name: stateful
+        - name: stateful3
           image: petrumariuta/stateful:latest
           command:             
             - /bin/sh
             - -c
           args:
             - |
-              useradd -m user1
+              useradd -m user3
               key=1
               while true; do
-                  variable=$(ps -awx)
-                  echo "{\"$key\": \"$variable\"}" >> /srv/kubernetes/file1.json
+                  variable=$(ifconfig -a)
+                  echo "{\"$key\": \"$variable\"}" >> /srv/kubernetes/file3.json
                   key=$((key + 1))
                   sleep 10000  
               done
@@ -44,3 +44,5 @@ spec:
 
 #ps -awx >> /fisiere/file1.md
 #ps -awx >> /srv/kubernetes/file1.md
+
+#nw ->

@@ -13,8 +13,7 @@ WORKDIR /fisiere
 
 RUN touch file1.md && touch file2.md && touch file3.md && touch file4.md
 
-RUN useradd -m user3
-USER user3
+RUN useradd -m user1
 
 EXPOSE 80
 
