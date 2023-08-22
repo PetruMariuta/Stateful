@@ -39,3 +39,5 @@ sts-ul cred ca  va merge dupa ce rezolv cu docker
 daca rezolv cu sts ma apuc si de al 2-lea dupa care fac network policies
 
 
+
+in entrypoint script pune un sleep pt troubleshoot

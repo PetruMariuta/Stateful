@@ -1,23 +1,30 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful5
+  name: stateful4
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful5
-  serviceName: stateful5
+      app: stateful4
+  serviceName: stateful4
   template:
     metadata:
       labels:
-        app: stateful5
+        app: stateful4
     spec:
       containers:
         - name: apache-task5
           image: petrumariuta/apache-task5:latest
           ports:
             - containerPort: 80
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              cat /srv/kubernetes/file*.json > /srv/kubernetes/output.json
+              cat /srv/kubernetes/file*.json > /var/www/html/index.html 
           volumeMounts:
             - name: pv-nfs
               mountPath: /srv/kubernetes
@@ -29,3 +36,4 @@ spec:
 
 #ps -awx >> /fisiere/file1.md
 #ps -awx >> /srv/kubernetes/file1.md
+#printf "HTTP/1.1 200\n\n\n$out\n" | nc -vlp  80

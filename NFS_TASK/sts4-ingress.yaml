@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stateful4-server-ingress
+spec:
+  rules:
+    - host: stateful4.local
+      http:
+        paths:
+          - path: "/"
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: stateful4
+                port:
+                  number: 80

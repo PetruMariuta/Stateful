@@ -17,7 +17,9 @@ spec:
       containers:
         - name: stateful
           image: petrumariuta/stateful:latest
-          command:             
+#          ports:
+#            - containerPort: 86
+          command:
             - /bin/sh
             - -c
           args:
