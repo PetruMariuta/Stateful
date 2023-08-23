@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: apache-task5
-          image: petrumariuta/apache-task5:latest
+          image: petrumariuta/apache-task5:0.0.1
           ports:
             - containerPort: 80
           command:
@@ -24,7 +24,8 @@ spec:
           args:
             - |
               cat /srv/kubernetes/file*.json > /srv/kubernetes/output.json
-              cat /srv/kubernetes/file*.json > /var/www/html/index.html 
+              cat /srv/kubernetes/file*.json > /var/www/html/index.html
+              ./start_apache.bash
           volumeMounts:
             - name: pv-nfs
               mountPath: /srv/kubernetes
