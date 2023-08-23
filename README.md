@@ -53,3 +53,8 @@ script care genereaza in html ce am eu in fisiere---gen <div> hardcoded ... cat/
 Volume claim templates e dinamic, nu poate stoca pe acelasi volum
 
 APPLY PV -- PVC -- STS
+
+
+-------22aug
+
+schimba imaginea la sts 1,2,3; e cea fara apache2
