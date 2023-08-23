@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow
+  namespace: namespace1
+spec:
+  podSelector:
+    matchLabels: {}
+    #app: app=web-server
+  policyTypes:
+    - Ingress
+#    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: namespace1

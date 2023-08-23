@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: stateful4-server-ingress
+  namespace: namespace1
 spec:
   rules:
     - host: stateful4.local
@@ -14,3 +15,7 @@ spec:
                 name: stateful4
                 port:
                   number: 80
+  tls:
+    - hosts:
+        - stateful4.local
+      secretName: tls-secret1

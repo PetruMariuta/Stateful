@@ -1,9 +1,11 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: nfs-pvc-claim
+  name: nfs-pvc-claim-sts2
+#  namespace: namespace-sts2
 spec:
-  storageClassName: nfs-client
+  storageClassName: ""
+  volumeName: pv-nfs
   accessModes:
     - ReadWriteMany
   resources:

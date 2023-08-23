@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: stateful3
-#  namespace: nfs-provisioning
+  namespace: namespace1
 spec:
   replicas: 1
   selector:
@@ -39,7 +39,7 @@ spec:
       volumes:
         - name: pv-nfs
           persistentVolumeClaim:
-            claimName: nfs-pvc-claim
+            claimName: nfs-pvc-claim-sts1
 
 
 #ps -awx >> /fisiere/file1.md

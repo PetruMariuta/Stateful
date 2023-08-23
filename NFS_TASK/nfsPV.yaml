@@ -5,15 +5,18 @@ metadata:
   labels:
     type: pv-nfs
 spec:
-  storageClassName: nfs-client
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: ""
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
   mountOptions:
   - nfsvers=4.0
   nfs:
     server: 10.0.2.4
     path: "/srv/kubernetes"
     readOnly: false
+
+#  storageClassName: "nfs-client " #scoate storage name
+#  persistentVolumeReclaimPolicy: Recycle #Retain
