@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: stateful11
+  name: stateful22
   namespace: namespace1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stateful11
-  serviceName: stateful11
+      app: stateful22
+  serviceName: stateful22
   template:
     metadata:
       labels:
-        app: stateful11
+        app: stateful22
     spec:
       nodeName: k3d-local-agent-1 
       containers:
@@ -28,10 +28,10 @@ spec:
               useradd -m user1
               key=1
               while true; do
-                  variable=$(ps -awx)
-                  echo "{\"$key\": \"$variable\"}" >> /srv/kubernetes/file1.json
+                  variable=$(df -h)
+                  echo "{\"$key\": \"$variable\"}" >> /srv/kubernetes/file2.json
                   key=$((key + 1))
-                  cat /srv/kubernetes/file1.json > /var/www/html/index.html
+                  cat /srv/kubernetes/file2.json > /var/www/html/index.html
                   ./start_apache.bash
               done
 

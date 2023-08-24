@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stateful22-server-ingress
+  namespace: namespace1
+spec:
+  rules:
+    - host: stateful22.local
+      http:
+        paths:
+          - path: "/"
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: stateful22
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - stateful22.local
+      secretName: tls-secret22

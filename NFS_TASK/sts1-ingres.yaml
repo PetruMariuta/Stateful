@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stateful11-server-ingress
+  namespace: namespace1
+spec:
+  rules:
+    - host: stateful11.local
+      http:
+        paths:
+          - path: "/"
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: stateful11
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - stateful11.local
+      secretName: tls-secret11
