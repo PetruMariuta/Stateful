@@ -2,7 +2,7 @@ from apscheduler.schedulers.background import BlockingScheduler
 import requests
 import datetime
 
-path = "/var/log"
+log_path = "/var/log"
 def main():
      
     date = datetime.datetime.now().strftime("%Y%m%d")
@@ -16,13 +16,13 @@ def main():
       
         try:         
          output = requests.get(url ,verify="/usr/local/share/ca-certificates/myCA11.crt")
-         with open(f"{path}/LOGS_{date}.logs", "a") as file:
+         with open(f"{log_path}/LOGS_{date}.logs", "a") as file:
 
             file.write(f"Pod {pod_name} has a response of " + str(output)+"\n")
 
         except OSError as error:        
          output = requests.get(url ,verify="/usr/local/share/ca-certificates/myCA1.crt")
-         with open(f"{path}/LOGS_{date}.logs", "a") as file:
+         with open(f"{log_path}/LOGS_{date}.logs", "a") as file:
          #with open("/home/petru/task-8-august/NFS_TASK/bonus_LOGS.logs", "a") as file:
 
              file.write(f"Pod {pod_name} has a response of " + str(output)+"\n")
